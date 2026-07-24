@@ -33,6 +33,7 @@ void viewSeatMap();
 void bookSeats();
 void cancelBooking();
 void searchBooking();
+void viewRevenueReport();
 
 int main() {
     initializeData();
@@ -59,7 +60,7 @@ int main() {
             case 3: bookSeats(); break;
             case 4: cancelBooking(); break;
             case 5: searchBooking(); break;
-            case 6: break;
+            case 6: viewRevenueReport(); break;
             case 7:
                 printf("\nThank you for using the system!\n");
                 break;
@@ -133,7 +134,6 @@ void viewSeatMap() {
     }
     printf("(. = Available, X = Booked)\n");
 }
-
 void bookSeats() {
     int showChoice;
     viewShowtimes();
@@ -250,7 +250,6 @@ void searchBooking() {
         int booked = 0;
         char *namePtr = NULL;
         double price = 0.0;
-
         if (showChoice == 1) { booked = seats_show1[r][c]; namePtr = &names_show1[r][c][0]; price = price_show1[r][c]; }
         else if (showChoice == 2) { booked = seats_show2[r][c]; namePtr = &names_show2[r][c][0]; price = price_show2[r][c]; }
         else if (showChoice == 3) { booked = seats_show3[r][c]; namePtr = &names_show3[r][c][0]; price = price_show3[r][c]; }
@@ -268,4 +267,8 @@ void searchBooking() {
     } else {
         printf("Invalid seat position!\n");
     }
+}
+
+void viewRevenueReport() {
+
 }
