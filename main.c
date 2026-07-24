@@ -32,6 +32,7 @@ void viewShowtimes();
 void viewSeatMap();
 void bookSeats();
 void cancelBooking();
+void searchBooking();
 
 int main() {
     initializeData();
@@ -57,7 +58,7 @@ int main() {
             case 2: viewSeatMap(); break;
             case 3: bookSeats(); break;
             case 4: cancelBooking(); break;
-            case 5: break;
+            case 5: searchBooking(); break;
             case 6: break;
             case 7:
                 printf("\nThank you for using the system!\n");
@@ -223,4 +224,8 @@ void cancelBooking() {
     } else {
         printf("Invalid seat position!\n");
     }
+}
+
+void searchBooking() {
+
 }
