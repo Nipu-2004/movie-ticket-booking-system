@@ -132,6 +132,7 @@ void viewSeatMap() {
     }
     printf("(. = Available, X = Booked)\n");
 }
+
 void bookSeats() {
     int showChoice;
     viewShowtimes();
@@ -180,5 +181,46 @@ void bookSeats() {
 }
 
 void cancelBooking() {
+    int showChoice;
+    viewShowtimes();
+    printf("\nSelect Showtime to cancel (1-6): ");
+    scanf("%d", &showChoice);
 
+    if (showChoice < 1 || showChoice > 6) {
+        printf("Invalid Showtime!\n");
+        return;
+    }
+
+    char rowChar;
+    int col;
+    printf("Enter Row (A-E): ");
+    scanf(" %c", &rowChar);
+    int r = rowChar - 'A';
+    printf("Enter Column (1-10): ");
+    scanf("%d", &col);
+    int c = col - 1;
+
+    if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
+        int *seatPtr = NULL;
+        char *namePtr = NULL;
+        double *pricePtr = NULL;
+
+        if (showChoice == 1) { seatPtr = &seats_show1[r][c]; namePtr = &names_show1[r][c][0]; pricePtr = &price_show1[r][c]; }
+        else if (showChoice == 2) { seatPtr = &seats_show2[r][c]; namePtr = &names_show2[r][c][0]; pricePtr = &price_show2[r][c]; }
+        else if (showChoice == 3) { seatPtr = &seats_show3[r][c]; namePtr = &names_show3[r][c][0]; pricePtr = &price_show3[r][c]; }
+        else if (showChoice == 4) { seatPtr = &seats_show4[r][c]; namePtr = &names_show4[r][c][0]; pricePtr = &price_show4[r][c]; }
+        else if (showChoice == 5) { seatPtr = &seats_show5[r][c]; namePtr = &names_show5[r][c][0]; pricePtr = &price_show5[r][c]; }
+        else if (showChoice == 6) { seatPtr = &seats_show6[r][c]; namePtr = &names_show6[r][c][0]; pricePtr = &price_show6[r][c]; }
+
+        if (*seatPtr == 1) {
+            *seatPtr = 0;
+            namePtr[0] = '\0';
+            *pricePtr = 0.0;
+            printf("Booking cancelled successfully!\n");
+        } else {
+            printf("Seat is already vacant/not booked!\n");
+        }
+    } else {
+        printf("Invalid seat position!\n");
+    }
 }
