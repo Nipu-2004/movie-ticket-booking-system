@@ -27,7 +27,10 @@ int seats_show6[ROWS][COLS];
 char names_show6[ROWS][COLS][50];
 double price_show6[ROWS][COLS];
 
+void initializeData();
+
 int main() {
+    initializeData();
     int choice = 0;
 
     while (choice != 7) {
@@ -62,3 +65,16 @@ int main() {
     }
     return 0;
 }
+
+void initializeData() {
+    for (int r = 0; r < ROWS; r++) {
+        for (int c = 0; c < COLS; c++) {
+            seats_show1[r][c] = 0; seats_show2[r][c] = 0; seats_show3[r][c] = 0;
+            seats_show4[r][c] = 0; seats_show5[r][c] = 0; seats_show6[r][c] = 0;
+            names_show1[r][c][0] = '\0'; names_show2[r][c][0] = '\0'; names_show3[r][c][0] = '\0';
+            names_show4[r][c][0] = '\0'; names_show5[r][c][0] = '\0'; names_show6[r][c][0] = '\0';
+            price_show1[r][c] = 0.0; price_show2[r][c] = 0.0; price_show3[r][c] = 0.0;
+            price_show4[r][c] = 0.0; price_show5[r][c] = 0.0; price_show6[r][c] = 0.0;
+        }
+    }
+}ss
