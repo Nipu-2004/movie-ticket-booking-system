@@ -138,31 +138,44 @@ void bookSeats() {
     printf("\nSelect Showtime to book (1-6): ");
     scanf("%d", &showChoice);
 
-    if (showChoice == 1) {
-        char rowChar;
-        int col, tickets;
-        printf("Enter Row (A-E): ");
-        scanf(" %c", &rowChar);
-        int r = rowChar - 'A';
-        printf("Enter Column (1-10): ");
-        scanf("%d", &col);
-        int c = col - 1;
+    if (showChoice < 1 || showChoice > 6) {
+        printf("Invalid Showtime!\n");
+        return;
+    }
 
-        if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
-            if (seats_show1[r][c] == 0) {
-                seats_show1[r][c] = 1;
-                printf("Enter Name: ");
-                scanf("%s", names_show1[r][c]);
-                printf("Enter Price: ");
-                scanf("%lf", &price_show1[r][c]);
-                printf("Seat booked successfully!\n");
-            } else {
-                printf("Seat already booked!\n");
-            }
+    char rowChar;
+    int col;
+    printf("Enter Row (A-E): ");
+    scanf(" %c", &rowChar);
+    int r = rowChar - 'A';
+    printf("Enter Column (1-10): ");
+    scanf("%d", &col);
+    int c = col - 1;
+
+    if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
+        int *seatPtr = NULL;
+        char *namePtr = NULL;
+        double *pricePtr = NULL;
+
+        // Pointer/Reference mapping for selected show
+        if (showChoice == 1) { seatPtr = &seats_show1[r][c]; namePtr = &names_show1[r][c][0]; pricePtr = &price_show1[r][c]; }
+        else if (showChoice == 2) { seatPtr = &seats_show2[r][c]; namePtr = &names_show2[r][c][0]; pricePtr = &price_show2[r][c]; }
+        else if (showChoice == 3) { seatPtr = &seats_show3[r][c]; namePtr = &names_show3[r][c][0]; pricePtr = &price_show3[r][c]; }
+        else if (showChoice == 4) { seatPtr = &seats_show4[r][c]; namePtr = &names_show4[r][c][0]; pricePtr = &price_show4[r][c]; }
+        else if (showChoice == 5) { seatPtr = &seats_show5[r][c]; namePtr = &names_show5[r][c][0]; pricePtr = &price_show5[r][c]; }
+        else if (showChoice == 6) { seatPtr = &seats_show6[r][c]; namePtr = &names_show6[r][c][0]; pricePtr = &price_show6[r][c]; }
+
+        if (*seatPtr == 0) {
+            *seatPtr = 1;
+            printf("Enter Name: ");
+            scanf("%s", namePtr);
+            printf("Enter Price: ");
+            scanf("%lf", pricePtr);
+            printf("Seat booked successfully!\n");
         } else {
-            printf("Invalid seat position!\n");
+            printf("Seat already booked!\n");
         }
     } else {
-        printf("Booking for this show not fully implemented yet in this commit.\n");
+        printf("Invalid seat position!\n");
     }
 }
