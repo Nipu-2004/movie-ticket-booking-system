@@ -1,8 +1,44 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main()
-{
+#define ROWS 5
+#define COLS 10
 
+int seats_show1[ROWS][COLS];
+char names_show1[ROWS][COLS][50];
+double price_show1[ROWS][COLS];
+
+int main() {
+    int choice = 0;
+
+    while (choice != 7) {
+        printf("\n=====================================\n");
+        printf("    MOVIE TICKET BOOKING SYSTEM      \n");
+        printf("=====================================\n");
+        printf("1. View Showtimes\n");
+        printf("2. View Seat Map\n");
+        printf("3. Book Seats\n");
+        printf("4. Cancel Booking\n");
+        printf("5. Search Booking\n");
+        printf("6. View Revenue Report\n");
+        printf("7. Exit\n");
+        printf("-------------------------------------\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+            case 5: break;
+            case 6: break;
+            case 7:
+                printf("\nThank you for using the system!\n");
+                break;
+            default:
+                printf("\nInvalid choice! Please try again.\n");
+                break;
+        }
+    }
     return 0;
 }
