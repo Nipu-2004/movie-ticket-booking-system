@@ -227,5 +227,45 @@ void cancelBooking() {
 }
 
 void searchBooking() {
+    int showChoice;
+    viewShowtimes();
+    printf("\nSelect Showtime to search (1-6): ");
+    scanf("%d", &showChoice);
 
+    if (showChoice < 1 || showChoice > 6) {
+        printf("Invalid Showtime!\n");
+        return;
+    }
+
+    char rowChar;
+    int col;
+    printf("Enter Row (A-E): ");
+    scanf(" %c", &rowChar);
+    int r = rowChar - 'A';
+    printf("Enter Column (1-10): ");
+    scanf("%d", &col);
+    int c = col - 1;
+
+    if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
+        int booked = 0;
+        char *namePtr = NULL;
+        double price = 0.0;
+
+        if (showChoice == 1) { booked = seats_show1[r][c]; namePtr = &names_show1[r][c][0]; price = price_show1[r][c]; }
+        else if (showChoice == 2) { booked = seats_show2[r][c]; namePtr = &names_show2[r][c][0]; price = price_show2[r][c]; }
+        else if (showChoice == 3) { booked = seats_show3[r][c]; namePtr = &names_show3[r][c][0]; price = price_show3[r][c]; }
+        else if (showChoice == 4) { booked = seats_show4[r][c]; namePtr = &names_show4[r][c][0]; price = price_show4[r][c]; }
+        else if (showChoice == 5) { booked = seats_show5[r][c]; namePtr = &names_show5[r][c][0]; price = price_show5[r][c]; }
+        else if (showChoice == 6) { booked = seats_show6[r][c]; namePtr = &names_show6[r][c][0]; price = price_show6[r][c]; }
+
+        if (booked == 1) {
+            printf("\nSeat Found!\n");
+            printf("Name: %s\n", namePtr);
+            printf("Price: %.2f\n", price);
+        } else {
+            printf("Seat is currently available (Not Booked).\n");
+        }
+    } else {
+        printf("Invalid seat position!\n");
+    }
 }
