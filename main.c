@@ -31,6 +31,7 @@ void initializeData();
 void viewShowtimes();
 void viewSeatMap();
 void bookSeats();
+void cancelBooking();
 
 int main() {
     initializeData();
@@ -55,7 +56,7 @@ int main() {
             case 1: viewShowtimes(); break;
             case 2: viewSeatMap(); break;
             case 3: bookSeats(); break;
-            case 4: break;
+            case 4: cancelBooking(); break;
             case 5: break;
             case 6: break;
             case 7:
@@ -131,7 +132,6 @@ void viewSeatMap() {
     }
     printf("(. = Available, X = Booked)\n");
 }
-
 void bookSeats() {
     int showChoice;
     viewShowtimes();
@@ -157,7 +157,6 @@ void bookSeats() {
         char *namePtr = NULL;
         double *pricePtr = NULL;
 
-        // Pointer/Reference mapping for selected show
         if (showChoice == 1) { seatPtr = &seats_show1[r][c]; namePtr = &names_show1[r][c][0]; pricePtr = &price_show1[r][c]; }
         else if (showChoice == 2) { seatPtr = &seats_show2[r][c]; namePtr = &names_show2[r][c][0]; pricePtr = &price_show2[r][c]; }
         else if (showChoice == 3) { seatPtr = &seats_show3[r][c]; namePtr = &names_show3[r][c][0]; pricePtr = &price_show3[r][c]; }
@@ -178,4 +177,8 @@ void bookSeats() {
     } else {
         printf("Invalid seat position!\n");
     }
+}
+
+void cancelBooking() {
+
 }
