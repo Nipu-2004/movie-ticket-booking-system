@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 #define ROWS 5
@@ -31,6 +30,7 @@ double price_show6[ROWS][COLS];
 void initializeData();
 void viewShowtimes();
 void viewSeatMap();
+void bookSeats();
 
 int main() {
     initializeData();
@@ -54,7 +54,7 @@ int main() {
         switch (choice) {
             case 1: viewShowtimes(); break;
             case 2: viewSeatMap(); break;
-            case 3: break;
+            case 3: bookSeats(); break;
             case 4: break;
             case 5: break;
             case 6: break;
@@ -130,4 +130,7 @@ void viewSeatMap() {
         printf("\n");
     }
     printf("(. = Available, X = Booked)\n");
+}
+
+void bookSeats() {
 }
