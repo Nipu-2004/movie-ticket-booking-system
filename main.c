@@ -28,6 +28,7 @@ char names_show6[ROWS][COLS][50];
 double price_show6[ROWS][COLS];
 
 void initializeData();
+void viewShowtimes();
 
 int main() {
     initializeData();
@@ -49,7 +50,9 @@ int main() {
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1: break;
+            case 1:
+                viewShowtimes();
+                break;
             case 2: break;
             case 3: break;
             case 4: break;
@@ -77,4 +80,14 @@ void initializeData() {
             price_show4[r][c] = 0.0; price_show5[r][c] = 0.0; price_show6[r][c] = 0.0;
         }
     }
-}ss
+}
+
+void viewShowtimes() {
+    printf("\n--- AVAILABLE SHOWTIMES ---\n");
+    printf("1. Avatar 3 (10:00 AM)\n");
+    printf("2. Avatar 3 (01:00 PM)\n");
+    printf("3. Inception (02:30 PM)\n");
+    printf("4. Inception (05:30 PM)\n");
+    printf("5. Interstellar (06:30 PM)\n");
+    printf("6. Interstellar (09:30 PM)\n");
+}
