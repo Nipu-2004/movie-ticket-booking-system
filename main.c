@@ -133,4 +133,36 @@ void viewSeatMap() {
 }
 
 void bookSeats() {
+    int showChoice;
+    viewShowtimes();
+    printf("\nSelect Showtime to book (1-6): ");
+    scanf("%d", &showChoice);
+
+    if (showChoice == 1) {
+        char rowChar;
+        int col, tickets;
+        printf("Enter Row (A-E): ");
+        scanf(" %c", &rowChar);
+        int r = rowChar - 'A';
+        printf("Enter Column (1-10): ");
+        scanf("%d", &col);
+        int c = col - 1;
+
+        if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
+            if (seats_show1[r][c] == 0) {
+                seats_show1[r][c] = 1;
+                printf("Enter Name: ");
+                scanf("%s", names_show1[r][c]);
+                printf("Enter Price: ");
+                scanf("%lf", &price_show1[r][c]);
+                printf("Seat booked successfully!\n");
+            } else {
+                printf("Seat already booked!\n");
+            }
+        } else {
+            printf("Invalid seat position!\n");
+        }
+    } else {
+        printf("Booking for this show not fully implemented yet in this commit.\n");
+    }
 }
