@@ -3,6 +3,8 @@
 #define ROWS 5
 #define COLS 10
 
+//Code Cleanup & Refinement
+
 int seats_show1[ROWS][COLS];
 char names_show1[ROWS][COLS][50];
 double price_show1[ROWS][COLS];
