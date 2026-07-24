@@ -133,5 +133,4 @@ void viewSeatMap() {
 }
 
 void bookSeats() {
-
 }
