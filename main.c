@@ -134,6 +134,7 @@ void viewSeatMap() {
     }
     printf("(. = Available, X = Booked)\n");
 }
+
 void bookSeats() {
     int showChoice;
     viewShowtimes();
@@ -250,6 +251,7 @@ void searchBooking() {
         int booked = 0;
         char *namePtr = NULL;
         double price = 0.0;
+
         if (showChoice == 1) { booked = seats_show1[r][c]; namePtr = &names_show1[r][c][0]; price = price_show1[r][c]; }
         else if (showChoice == 2) { booked = seats_show2[r][c]; namePtr = &names_show2[r][c][0]; price = price_show2[r][c]; }
         else if (showChoice == 3) { booked = seats_show3[r][c]; namePtr = &names_show3[r][c][0]; price = price_show3[r][c]; }
@@ -270,5 +272,17 @@ void searchBooking() {
 }
 
 void viewRevenueReport() {
-
+    double totalRevenue = 0.0;
+    for (int r = 0; r < ROWS; r++) {
+        for (int c = 0; c < COLS; c++) {
+            totalRevenue += price_show1[r][c];
+            totalRevenue += price_show2[r][c];
+            totalRevenue += price_show3[r][c];
+            totalRevenue += price_show4[r][c];
+            totalRevenue += price_show5[r][c];
+            totalRevenue += price_show6[r][c];
+        }
+    }
+    printf("\n--- REVENUE REPORT ---\n");
+    printf("Total System Revenue: $%.2f\n", totalRevenue);
 }
