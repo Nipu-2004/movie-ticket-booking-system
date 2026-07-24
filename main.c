@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 #define ROWS 5
@@ -29,6 +30,7 @@ double price_show6[ROWS][COLS];
 
 void initializeData();
 void viewShowtimes();
+void viewSeatMap();
 
 int main() {
     initializeData();
@@ -50,10 +52,8 @@ int main() {
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1:
-                viewShowtimes();
-                break;
-            case 2: break;
+            case 1: viewShowtimes(); break;
+            case 2: viewSeatMap(); break;
             case 3: break;
             case 4: break;
             case 5: break;
@@ -90,4 +90,44 @@ void viewShowtimes() {
     printf("4. Inception (05:30 PM)\n");
     printf("5. Interstellar (06:30 PM)\n");
     printf("6. Interstellar (09:30 PM)\n");
+}
+
+void viewSeatMap() {
+    int showChoice;
+    viewShowtimes();
+    printf("\nSelect Showtime (1-6): ");
+    scanf("%d", &showChoice);
+
+    if (showChoice < 1 || showChoice > 6) {
+        printf("Invalid Showtime!\n");
+        return;
+    }
+
+    printf("\n--- SEAT MAP ---\n");
+    printf("     ");
+    for (int c = 1; c <= COLS; c++) {
+        printf("%2d ", c);
+    }
+    printf("\n");
+
+    for (int r = 0; r < ROWS; r++) {
+        printf("Row %c: ", 'A' + r);
+        for (int c = 0; c < COLS; c++) {
+            int booked = 0;
+            if (showChoice == 1) booked = seats_show1[r][c];
+            else if (showChoice == 2) booked = seats_show2[r][c];
+            else if (showChoice == 3) booked = seats_show3[r][c];
+            else if (showChoice == 4) booked = seats_show4[r][c];
+            else if (showChoice == 5) booked = seats_show5[r][c];
+            else if (showChoice == 6) booked = seats_show6[r][c];
+
+            if (booked == 1) {
+                printf(" X ");
+            } else {
+                printf(" . ");
+            }
+        }
+        printf("\n");
+    }
+    printf("(. = Available, X = Booked)\n");
 }
