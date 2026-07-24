@@ -7,6 +7,26 @@ int seats_show1[ROWS][COLS];
 char names_show1[ROWS][COLS][50];
 double price_show1[ROWS][COLS];
 
+int seats_show2[ROWS][COLS];
+char names_show2[ROWS][COLS][50];
+double price_show2[ROWS][COLS];
+
+int seats_show3[ROWS][COLS];
+char names_show3[ROWS][COLS][50];
+double price_show3[ROWS][COLS];
+
+int seats_show4[ROWS][COLS];
+char names_show4[ROWS][COLS][50];
+double price_show4[ROWS][COLS];
+
+int seats_show5[ROWS][COLS];
+char names_show5[ROWS][COLS][50];
+double price_show5[ROWS][COLS];
+
+int seats_show6[ROWS][COLS];
+char names_show6[ROWS][COLS][50];
+double price_show6[ROWS][COLS];
+
 int main() {
     int choice = 0;
 
